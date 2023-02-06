@@ -1,0 +1,1 @@
+import {StyleSheet, ViewStyle, TextStyle} from 'react-native'
