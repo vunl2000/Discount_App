@@ -1,16 +1,14 @@
 import { Image, Text, TouchableOpacity, FlatList, Linking, SafeAreaView } from 'react-native'
-import { Button, HStack, View, VStack } from 'native-base'
+import { Button, HStack, Icon, Input, View, VStack } from 'native-base'
 import React, { useEffect, useState } from 'react'
-import { IconEntypo, IconIonicons } from '../../Utils/IconHelper';
 import styles from './styles';
 import Swiper from 'react-native-swiper';
-import { SCREEN_WIDTH } from '../../Constants/constants';
-import ScrollViewComponent from '../../Components/ScrollView';
 import Modal from 'react-native-modalbox';
 import Clipboard from '@react-native-clipboard/clipboard';
-import { ItemModal } from './ItemModel';
-import { useNavigation } from '@react-navigation/native';
-import { SCREENS } from '../../Constants/screens';
+import { IconEntypo, IconIonicons } from '../../../Utils/IconHelper';
+import ScrollViewComponent from '../../../Components/ScrollView';
+import { SCREEN_WIDTH } from '../../../Constants/constants';
+import BaseScreen from '../../BaseScreen';
 
 type Props = {}
 
@@ -22,24 +20,19 @@ const data = [
   'https://config.meoconbanhang.com/upload-image/4seller-banner-hdsd.png',
   'https://tieuthantai.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2022/08/11020627/unnamed-1.jpg'
 ]
-const tab = ['Taobao', '1688', 'Pinduoduo']
-type TypeLst = 'Taobao' | '1688' | 'Pinduoduo'
-const Home: React.FC<Props> = () => {
+
+const SearchProduct: React.FC<Props> = () => {
   const ref_modal = React.useRef<Modal>(null);
-  const [lstData, setlstData] = useState<ItemModal[]>([])
-  const [itemSeleted, setItemSeleted] = useState<ItemModal | null>(null)
-  const [typeList, setTypeList] = useState<TypeLst>('Taobao');
-
-  const navigation: any = useNavigation();
-
-  const gotoSearch = () => navigation.navigate(SCREENS.SEARCH_PRODUCT);
+  const [lstData, setlstData] = useState<any[]>([])
+  const [itemSeleted, setItemSeleted] = useState<any | null>(null)
+  const [keySearch, setKeySearch] = useState<string>('')
 
   const getData = () => {
     fetch(url2, { method: 'GET' }).
       then(rs => rs.json()).
       then(value => {
         if (value.code == 'SUCCESS')
-          setlstData(JSON.parse(value.data) as ItemModal[]);
+          setlstData(JSON.parse(value.data) as any[]);
       }).catch(err => { })
   }
 
@@ -47,38 +40,26 @@ const Home: React.FC<Props> = () => {
     Clipboard.setString(val);
   };
 
-  const onChangeTab = (type: string) => {
-    setTypeList(type as TypeLst);
-    getData();
-  }
 
   const onpenLink = async (url: string) => {
     await Linking.openURL(url);
   }
 
+  const handleChangeKeySearch = (val: string) => setKeySearch(val);
+
   useEffect(() => {
     getData();
   }, [])
 
-  const RenderTabMenu = () =>
-  (<HStack m={2} style={styles.viewTabs}>
-    {tab.map((item, i) => (
-      <HStack flex={1} p={4} justifyContent='center' key={'tab' + i.toString()}>
-        <TouchableOpacity onPress={() => onChangeTab(item)}>
-          <Text style={{ ...styles.textLabel, opacity: typeList === item ? 1 : 0.7 }}>{item}</Text>
-        </TouchableOpacity>
-      </HStack>
-    ))}
-  </HStack>)
 
-  const renderItem = ({ item }: { item: ItemModal }) => (
+  const renderItem = ({ item }: { item: any }) => (
     <HStack style={styles.viewItem} space={2}>
       <Image source={{ uri: item.img }} style={styles.imageItem} resizeMode='cover' />
 
       <VStack flex={1}>
         <VStack flex={1} >
           <View>
-            <Text style={styles.textValue} numberOfLines={1} ellipsizeMode='tail'><Text style={{ color: '#f43f5e', fontWeight: 'bold' }}>{typeList == 'Taobao' ? 'TAO' : typeList == '1688' ? '1688' : 'PIN'}</Text> {item.name}</Text>
+            <Text style={styles.textValue} numberOfLines={1} ellipsizeMode='tail'><Text style={{ color: '#f43f5e', fontWeight: 'bold' }}>TAO</Text> {item.name}</Text>
             <Text numberOfLines={1} ellipsizeMode='tail'>Chiết khấu: ￥{item.rate}</Text>
             <Text numberOfLines={1} ellipsizeMode='tail'>Giá thành: ￥{item.price}</Text>
           </View>
@@ -103,30 +84,31 @@ const Home: React.FC<Props> = () => {
     </HStack>
   )
   return (
-    <VStack flex={1} safeArea bgColor='blueGray.100'>
-      <TouchableOpacity activeOpacity={1} onPress={gotoSearch}>
-        <HStack style={styles.viewSearch} space={2}>
-          <IconIonicons name='search' size={24} color='#000' />
-          <Text style={styles.textLabel}>Tìm kiếm</Text>
-        </HStack>
-      </TouchableOpacity>
-      <VStack flex={1} >
-        <ScrollViewComponent>
-          <HStack height={SCREEN_WIDTH / 2.5} alignItems='center' m={2}>
-            <Swiper loop autoplay showsPagination={false}>
-              <Image source={{ uri: data[0] }} style={styles.image} />
-              <Image source={{ uri: data[1] }} style={styles.image} />
-              <Image source={{ uri: data[2] }} style={styles.image} />
-            </Swiper>
-          </HStack>
-          <RenderTabMenu />
-          <FlatList
-            data={lstData}
-            renderItem={renderItem}
-            keyExtractor={(item, index) => 'home' + index.toString()}
-            scrollEnabled={false}
+    <BaseScreen title='Tìm kiếm'>
+      <VStack flex={1} space={3} pt={4}>
+        <HStack space={2} px={3}>
+          <Input
+            value={keySearch}
+            onChangeText={handleChangeKeySearch}
+            placeholder="Tìm kiếm"
+            borderRadius={10}
+            fontSize={14}
+            color='#000'
+            flex={1}
+            colorScheme='light'
+            InputLeftElement={<Icon as={<IconIonicons name='search' />} size={5} ml="2" color='blue.500' />}
           />
-        </ScrollViewComponent>
+          <HStack px={5} alignItems='center' justifyContent='center' bgColor='blue.400' borderRadius={10}>
+            <IconIonicons name='search' size={24} color='#fff' />
+          </HStack>
+        </HStack>
+        <FlatList
+          data={lstData}
+          renderItem={renderItem}
+          keyExtractor={(item, index) => 'home' + index.toString()}
+          scrollEnabled={false}
+        />
+
       </VStack>
       <Modal
         ref={ref_modal}
@@ -140,7 +122,7 @@ const Home: React.FC<Props> = () => {
               <Image source={{ uri: itemSeleted.img }} resizeMode='cover' style={styles.imgModal} />
               <VStack flex={1}>
                 <Text numberOfLines={1} ellipsizeMode='tail'><Text style={{ color: '#f43f5e', fontWeight: 'bold' }}>
-                  {typeList == 'Taobao' ? 'TAO' : typeList == '1688' ? '1688' : 'PIN'}</Text>
+                  TAO </Text>
                   {itemSeleted.name}
                 </Text>
                 <Text numberOfLines={1} ellipsizeMode='tail'>Chiết khấu: ￥{itemSeleted.rate}</Text>
@@ -168,8 +150,8 @@ const Home: React.FC<Props> = () => {
             </HStack>
           </VStack>}
       </Modal>
-    </VStack>
+    </BaseScreen>
   )
 }
 
-export default Home
+export default SearchProduct

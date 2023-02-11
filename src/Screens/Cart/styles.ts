@@ -1,6 +1,6 @@
 import { ImageStyle, StatusBar } from 'react-native';
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
-import { SCREEN_WIDTH } from '../../constants/constants';
+import { SCREEN_WIDTH } from '../../Constants/constants';
 
 export default StyleSheet.create({
     viewSearch: {
@@ -8,6 +8,13 @@ export default StyleSheet.create({
         padding: 10,
         margin: 10,
         borderRadius: 10
+    } as ViewStyle,
+    viewIcon: {
+        width: 35,
+        height: 35,
+        alignSelf: 'center',
+        alignItems: 'center',
+        justifyContent: 'center'
     } as ViewStyle,
     viewContainTabs: {
         backgroundColor: '#f1f1f1',
@@ -29,9 +36,8 @@ export default StyleSheet.create({
         marginLeft: 12
     } as TextStyle,
     textEmpty: {
-        fontSize: 14,
+        fontSize: 20,
         color: '#000',
-        fontStyle: 'italic',
         fontWeight: '500'
     } as TextStyle,
     textTab: {

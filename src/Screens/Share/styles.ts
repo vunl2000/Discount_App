@@ -1,18 +1,14 @@
-import { StyleSheet, ViewStyle, TextStyle } from "react-native";
+import { StyleSheet, TextStyle, ViewStyle } from "react-native";
 
 export default StyleSheet.create({
-    txtValue: {
-        fontSize: 18,
-        color: '#000',
+    textLable: {
+        fontSize: 16,
+        color: '#333'
     } as TextStyle,
-    iconValue: {
-        fontSize: 25,
+    textValue: {
+        fontSize: 14,
         color: '#000'
-    },
-    iconUser: {
-        fontSize: 40,
-        color: '#000'
-    },
+    } as TextStyle,
     shadown: {
         backgroundColor: '#fff',
         marginHorizontal: 10,
@@ -26,4 +22,5 @@ export default StyleSheet.create({
         borderRadius: 10,
         elevation: 5,
     } as ViewStyle
+
 })

@@ -1,6 +1,6 @@
 import { ImageStyle } from 'react-native';
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
-import { SCREEN_WIDTH } from '../../Constants/constants';
+import { SCREEN_WIDTH } from '../../../Constants/constants';
 
 export default StyleSheet.create({
     iconSearch: {

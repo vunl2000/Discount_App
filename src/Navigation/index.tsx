@@ -5,13 +5,21 @@ import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import Home from '../Screens/Home';
 import Cart from '../Screens/Cart';
 import Profile from '../Screens/Person';
-import Login from '../Screens/SignIn';
+import Login from '../Screens/Account/SignIn';
 import { SCREENS } from '../Constants/screens';
 import { IS_IOS } from '../Constants/constants';
 import colors from '../Style/colors';
 import fontSizes from '../Style/fonts';
 import { HStack, Pressable } from 'native-base';
 import { IconFeather, IconIonicons } from '../Utils/IconHelper';
+import ShareScreen from '../Screens/Share';
+import PayScreen from '../Screens/Pay';
+import DetailAccount from '../Screens/Account/Detail';
+import ChangePass from '../Screens/Account/ChangePass';
+import Withdraw from '../Screens/Pay/Withdraw';
+import AddCard from '../Screens/Pay/AddCard';
+import HistoryWithdraw from '../Screens/Pay/HistoryWithdraw';
+import SearchProduct from '../Screens/Home/SearchProduct';
 
 const iconTabs = [{ active: '', unactive: '' }]
 
@@ -99,6 +107,14 @@ const AppNavigation = () => {
       <Native.Navigator initialRouteName={SCREENS.BOTTOM_TAB} screenOptions={{ headerShown: false, }} >
         <Native.Screen name={SCREENS.SIGN_IN} component={Login} />
         <Native.Screen name={SCREENS.BOTTOM_TAB} component={BottomTab} />
+        <Native.Screen name={SCREENS.SHARE} component={ShareScreen} />
+        <Native.Screen name={SCREENS.PAY} component={PayScreen} />
+        <Native.Screen name={SCREENS.DETATIL_ACCOUNT} component={DetailAccount} />
+        <Native.Screen name={SCREENS.CHANGE_PASS} component={ChangePass} />
+        <Native.Screen name={SCREENS.LINK_CARD} component={Withdraw} />
+        <Native.Screen name={SCREENS.ADD_CARD} component={AddCard} />
+        <Native.Screen name={SCREENS.HISTORY_WITHDRAW} component={HistoryWithdraw} />
+        <Native.Screen name={SCREENS.SEARCH_PRODUCT} component={SearchProduct} />
       </Native.Navigator>
     </NavigationContainer>
   )
