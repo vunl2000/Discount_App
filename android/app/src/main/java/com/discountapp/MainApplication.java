@@ -1,4 +1,4 @@
-package com.discountapp;
+package com.discountapptan;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

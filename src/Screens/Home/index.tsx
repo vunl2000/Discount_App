@@ -39,8 +39,10 @@ const Home: React.FC<Props> = () => {
       then(rs => rs.json()).
       then(value => {
         if (value.code == 'SUCCESS')
-          setlstData(JSON.parse(value.data) as ItemModal[]);
-      }).catch(err => { })
+          setlstData(value.data as ItemModal[]);
+      }).catch(err => {
+        console.log(err);
+      })
   }
 
   const copyToClipboard = (val: string) => {

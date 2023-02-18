@@ -20,6 +20,7 @@ import Withdraw from '../Screens/Pay/Withdraw';
 import AddCard from '../Screens/Pay/AddCard';
 import HistoryWithdraw from '../Screens/Pay/HistoryWithdraw';
 import SearchProduct from '../Screens/Home/SearchProduct';
+import RegistrationScreen from '../Screens/Account/SigUp/RegistrationScreen';
 
 const iconTabs = [{ active: '', unactive: '' }]
 
@@ -105,7 +106,8 @@ const AppNavigation = () => {
   return (
     <NavigationContainer>
       <Native.Navigator initialRouteName={SCREENS.BOTTOM_TAB} screenOptions={{ headerShown: false, }} >
-        <Native.Screen name={SCREENS.SIGN_IN} component={Login} />
+        {/* <Native.Screen name={SCREENS.SIGN_IN} component={Login} />
+        <Native.Screen name={SCREENS.SIGN_UP} component={RegistrationScreen} /> */}
         <Native.Screen name={SCREENS.BOTTOM_TAB} component={BottomTab} />
         <Native.Screen name={SCREENS.SHARE} component={ShareScreen} />
         <Native.Screen name={SCREENS.PAY} component={PayScreen} />
