@@ -5,6 +5,7 @@ import { HStack } from 'native-base'
 import styles from './styles'
 import { IconFeather } from '../../Utils/IconHelper'
 import { useNavigation } from '@react-navigation/native'
+import colors from '../../Style/colors'
 
 type Props = {
   title: string;
@@ -26,34 +27,34 @@ const Header = (props: Props) => {
   const RenderContent = () => {
     if (props.type == 'close') {
       return (
-        <HStack style={{ justifyContent: 'space-between', height: 50, alignItems: 'center', backgroundColor: '#0e6eb8', padding: 10 }}>
+        <HStack style={{ justifyContent: 'space-between', height: 50, alignItems: 'center', backgroundColor: colors.red, padding: 10 }}>
           <TouchableOpacity onPress={() => OnPress()}>
             <IconFeather allowFontScaling={false} name="x" style={{ fontSize: 30, color: '#fff' }} />
           </TouchableOpacity>
           <Text allowFontScaling={false} style={{ color: '#fff', fontSize: 18 }}>{props.title}</Text>
-          <IconFeather allowFontScaling={false} name="x" style={{ fontSize: 30, color: '#0e6eb8' }} />
+          <IconFeather allowFontScaling={false} name="x" style={{ fontSize: 30, color: colors.red }} />
         </HStack>
       );
     }
     if (props.type == undefined || props.type == 'callback') {
       return (
-        <HStack style={{ justifyContent: 'space-between', height: 50, alignItems: 'center', backgroundColor: '#0e6eb8', padding: 10 }}>
+        <HStack style={{ justifyContent: 'space-between', height: 50, alignItems: 'center', backgroundColor: colors.red, padding: 10 }}>
           <TouchableOpacity onPress={() => OnPress()}>
             <IconFeather allowFontScaling={false} name="chevron-left" style={{ fontSize: 30, color: '#fff' }} />
           </TouchableOpacity>
           <Text allowFontScaling={false} style={{ color: '#fff', fontSize: 18 }}>{props.title}</Text>
-          <IconFeather allowFontScaling={false} name="chevron-left" style={{ fontSize: 30, color: '#0e6eb8' }} />
+          <IconFeather allowFontScaling={false} name="chevron-left" style={{ fontSize: 30, color: colors.red }} />
         </HStack>
       )
     }
     return (
-      <IconFeather name="chevron-left" style={{ fontSize: 30, color: '#0e6eb8' }} />
+      <IconFeather name="chevron-left" style={{ fontSize: 30, color: colors.red }} />
     )
   }
 
   return (
     <SafeAreaView edges={['top', 'right', 'left']}>
-      <StatusBar backgroundColor='#0284c7' barStyle='light-content' />
+      <StatusBar backgroundColor={colors.red} barStyle='light-content' />
       <RenderContent />
     </SafeAreaView>
   )

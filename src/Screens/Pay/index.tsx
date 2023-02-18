@@ -47,7 +47,7 @@ const PayScreen: React.FC<Props> = (prop) => {
     return (
         <BaseScreen title='Ví tiền'>
             <VStack flex={1} bgColor='blueGray.100' space={4}>
-                <VStack bgColor='#0e6eb8' alignItems='center' justifyContent='center' py={5} px={3} space={2}>
+                <VStack bgColor={colors.red} alignItems='center' justifyContent='center' py={5} px={3} space={2}>
                     <Text style={styles.textMoney}>0.00</Text>
                     <Text style={{ ...styles.textMoney, fontSize: 16, fontWeight: '400' }}>Số tiền có thể rút</Text>
                 </VStack>

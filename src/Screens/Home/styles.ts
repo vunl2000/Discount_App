@@ -1,6 +1,7 @@
 import { ImageStyle } from 'react-native';
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 import { SCREEN_WIDTH } from '../../Constants/constants';
+import colors from '../../Style/colors';
 
 export default StyleSheet.create({
     iconSearch: {
@@ -76,7 +77,7 @@ export default StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         paddingVertical: 10,
-        borderColor: '#06b6d4',
+        borderColor: colors.red,
         borderWidth: 1,
         borderRadius: 5
     } as ViewStyle,
@@ -85,7 +86,7 @@ export default StyleSheet.create({
         justifyContent: 'center',
         paddingVertical: 10,
         paddingHorizontal: 16,
-        borderColor: '#06b6d4',
+        borderColor: colors.red,
         borderWidth: 1,
         borderRadius: 5
     } as ViewStyle,

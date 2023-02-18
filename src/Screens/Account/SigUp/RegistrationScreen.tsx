@@ -6,6 +6,7 @@ import {
   Keyboard,
   ScrollView,
   Alert,
+  StatusBar,
 } from 'react-native';
 import colors from '../../../Style/colors';
 import Loader from '../../../loader/Loader';
@@ -72,6 +73,10 @@ const RegistrationScreen = ({ navigation }: any) => {
   return (
     <SafeAreaView style={{ backgroundColor: colors.white, flex: 1 }}>
       {/* <Loader visible={loading} /> */}
+      <StatusBar
+        backgroundColor={colors.white}
+        barStyle={"dark-content"}
+      />
       <ScrollView
         contentContainerStyle={{ paddingTop: 50, paddingHorizontal: 20 }}>
         <Text style={{ color: colors.black, fontSize: 40, fontWeight: 'bold' }}>

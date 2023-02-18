@@ -11,12 +11,12 @@ const Button = ({ title, onPress = () => { } }: any) => {
             style={{
                 height: 55,
                 width: '100%',
-                backgroundColor: colors.blue,
+                backgroundColor: colors.red,
                 marginVertical: 20,
                 justifyContent: 'center',
                 alignItems: 'center',
             }}>
-            <Text style={{ color: colors.white, fontWeight: 'bold', fontSize: 18 }}>
+            <Text style={{ color: colors.black, fontWeight: 'bold', fontSize: 18 }}>
                 {title}
             </Text>
         </TouchableOpacity>

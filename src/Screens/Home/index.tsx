@@ -11,6 +11,7 @@ import Clipboard from '@react-native-clipboard/clipboard';
 import { ItemModal } from './ItemModel';
 import { useNavigation } from '@react-navigation/native';
 import { SCREENS } from '../../Constants/screens';
+import colors from '../../Style/colors';
 
 type Props = {}
 
@@ -88,7 +89,7 @@ const Home: React.FC<Props> = () => {
         <HStack space={2}>
           <TouchableOpacity style={{ flex: 1 }} onPress={() => onpenLink(item.url)}>
             <HStack style={styles.btnLink}>
-              <Text style={{ color: '#06b6d4' }}>Lấy liên kết</Text>
+              <Text style={{ color: colors.black, fontWeight: "700" }}>Lấy liên kết</Text>
             </HStack>
           </TouchableOpacity>
 
@@ -97,7 +98,7 @@ const Home: React.FC<Props> = () => {
             ref_modal.current?.open();
           }}>
             <HStack style={styles.btnShare}>
-              <IconEntypo name='share' size={24} color='#06b6d4' />
+              <IconEntypo name='share' size={24} color={colors.red} />
             </HStack>
           </TouchableOpacity>
         </HStack>

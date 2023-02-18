@@ -1,11 +1,12 @@
 import React from 'react';
-import { View, Text, SafeAreaView, Keyboard, Alert } from 'react-native';
+import { View, Text, SafeAreaView, Keyboard, Alert, StyleSheet, StatusBar } from 'react-native';
 import colors from '../../../Style/colors';
 import Loader from '../../../loader/Loader';
 import Input from '../../../Components/input/Input';
 import Button from '../../../Components/Button/Button';
 import { SCREENS } from '../../../Constants/screens';
 import { useNavigation } from '@react-navigation/native';
+import { stylesSignIn } from './styles';
 type Props = {}
 
 const SignIn = (props: Props) => {
@@ -33,7 +34,7 @@ const SignIn = (props: Props) => {
 
   const login = () => {
     setLoading(true);
-    // navigation.navigate(SCREENS.BOTTOM_TAB as never)
+    navigation.navigate(SCREENS.BOTTOM_TAB as never)
     // setTimeout(async () => {
     //   setLoading(false);
     //   // let userData = await AsyncStorage.getItem('userData');
@@ -65,16 +66,20 @@ const SignIn = (props: Props) => {
     setErrors((prevState: any) => ({ ...prevState, [input]: error }));
   };
   return (
-    <SafeAreaView style={{ backgroundColor: colors.white, flex: 1 }}>
+    <SafeAreaView style={styles.containner}>
+      <StatusBar
+        backgroundColor={colors.white}
+        barStyle={"dark-content"}
+      />
       {/* <Loader visible={loading} /> */}
-      <View style={{ paddingTop: 50, paddingHorizontal: 20 }}>
-        <Text style={{ color: colors.black, fontSize: 40, fontWeight: 'bold' }}>
+      <View style={styles.formStyle}>
+        <Text style={styles.textStyle}>
           Đăng nhập
         </Text>
-        <Text style={{ color: colors.grey, fontSize: 18, marginVertical: 10 }}>
+        <Text style={styles.styleDetail}>
           Nhập thông tin chi tiết của bạn để đăng nhập
         </Text>
-        <View style={{ marginVertical: 20 }}>
+        <View style={styles.formDetail}>
           <Input
             onChangeText={(text: any) => handleOnchange(text, 'email')}
             onFocus={() => handleError(null, 'email')}
@@ -95,12 +100,7 @@ const SignIn = (props: Props) => {
           <Button title="Đăng nhập" onPress={validate} />
           <Text
             onPress={() => navigation.navigate(SCREENS.SIGN_UP as never)}
-            style={{
-              color: colors.black,
-              fontWeight: 'bold',
-              textAlign: 'center',
-              fontSize: 16,
-            }}>
+            style={styles.textRegisters}>
             Bạn chưa có tài khoản? Đăng ký
           </Text>
         </View>
@@ -110,3 +110,7 @@ const SignIn = (props: Props) => {
 }
 
 export default SignIn;
+
+const styles = StyleSheet.create({
+  ...stylesSignIn
+})

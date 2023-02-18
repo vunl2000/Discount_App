@@ -9,6 +9,7 @@ import { IconEntypo, IconIonicons } from '../../../Utils/IconHelper';
 import ScrollViewComponent from '../../../Components/ScrollView';
 import { SCREEN_WIDTH } from '../../../Constants/constants';
 import BaseScreen from '../../BaseScreen';
+import colors from '../../../Style/colors';
 
 type Props = {}
 
@@ -67,7 +68,7 @@ const SearchProduct: React.FC<Props> = () => {
         <HStack space={2}>
           <TouchableOpacity style={{ flex: 1 }} onPress={() => onpenLink(item.url)}>
             <HStack style={styles.btnLink}>
-              <Text style={{ color: '#06b6d4' }}>Lấy liên kết</Text>
+              <Text style={{ color: colors.red }}>Lấy liên kết</Text>
             </HStack>
           </TouchableOpacity>
 

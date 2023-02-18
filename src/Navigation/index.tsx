@@ -105,9 +105,9 @@ const BottomTab = () => {
 const AppNavigation = () => {
   return (
     <NavigationContainer>
-      <Native.Navigator initialRouteName={SCREENS.BOTTOM_TAB} screenOptions={{ headerShown: false, }} >
-        {/* <Native.Screen name={SCREENS.SIGN_IN} component={Login} />
-        <Native.Screen name={SCREENS.SIGN_UP} component={RegistrationScreen} /> */}
+      <Native.Navigator initialRouteName={SCREENS.SIGN_IN} screenOptions={{ headerShown: false, }} >
+        <Native.Screen name={SCREENS.SIGN_IN} component={Login} />
+        <Native.Screen name={SCREENS.SIGN_UP} component={RegistrationScreen} />
         <Native.Screen name={SCREENS.BOTTOM_TAB} component={BottomTab} />
         <Native.Screen name={SCREENS.SHARE} component={ShareScreen} />
         <Native.Screen name={SCREENS.PAY} component={PayScreen} />
