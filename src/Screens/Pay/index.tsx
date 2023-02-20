@@ -9,6 +9,7 @@ import { useNavigation } from '@react-navigation/native'
 import { SCREENS } from '../../Constants/screens'
 import Modal from 'react-native-modalbox'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import colors from '../../Style/colors'
 
 type Props = {}
 
