@@ -25,5 +25,15 @@ export default StyleSheet.create({
         shadowRadius: 3.84,
         borderRadius: 10,
         elevation: 5,
-    } as ViewStyle
+    } as ViewStyle,
+    viewRow: {
+        flexDirection: 'row',
+        gap: 16,
+        padding: 16,
+        alignItems: 'center'
+    } as ViewStyle,
+    viewRowSub: {
+        gap: 10,
+        flex: 1
+    } as ViewStyle,
 })

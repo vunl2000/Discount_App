@@ -1,6 +1,6 @@
-import { GestureResponderEvent, StyleSheet, Text, Linking, TouchableOpacity } from 'react-native'
+import { GestureResponderEvent, StyleSheet, Text, Linking, View, TouchableOpacity } from 'react-native'
 import React from 'react'
-import { FlatList, HStack, VStack, View, useToast } from 'native-base'
+import { FlatList, HStack, useToast, VStack } from 'native-base'
 import { NavigationProp, useNavigation } from '@react-navigation/native'
 import StringHelper from '../../Utils/StringHelper'
 import { IconIonicons, IconOcticons } from '../../Utils/IconHelper'
@@ -21,7 +21,7 @@ type MenuController = {
 const URL_SUPPORT = 'https://chietkhau1688.vn/category/1/H%C6%B0%E1%BB%9Bng%20d%E1%BA%ABn'
 
 const Space = () => (
-  <View h={4} w='100%' />
+  <View style={{ width: '100%', height: 16 }} />
 )
 
 const Profile: React.FC<Props> = (props) => {
@@ -82,38 +82,38 @@ const Profile: React.FC<Props> = (props) => {
     },
   ] as MenuController[]
 
-  const renderMenu = ({ item, index }: { item: MenuController, index: number }) => {
+  const renderMenuNative = ({ item, index }: { item: MenuController, index: number }) => {
     return (
-      <TouchableOpacity onPress={item.onPress} activeOpacity={1}>
-        <HStack p={4} borderRadius={10} style={styles.shadown}>
+      <TouchableOpacity onPress={item.onPress} activeOpacity={1} style={{ flex: 1 }}>
+        <View style={[styles.viewRow, styles.shadown]}>
           <HStack w='14%' alignItems='center'>
             <IconIonicons name={item.icon} style={index === 0 ? styles.iconUser : styles.iconValue} />
           </HStack>
-          <VStack flex={1} justifyContent='center'>
+          <View style={styles.viewRowSub} >
             {!StringHelper.IsEmpty(item.userName) &&
               <Text>{item.userName}</Text>}
             {!StringHelper.IsEmpty(item.email) &&
               <Text>{item.email}</Text>}
             {!StringHelper.IsEmpty(item.title) &&
               <Text>{item.title}</Text>}
-          </VStack>
-          <View alignSelf='center'>
+          </View>
+          <View>
             <IconIonicons name='chevron-forward-outline' size={20} color='#000' />
           </View>
-        </HStack>
+        </View>
       </TouchableOpacity>
     );
   }
   return (
-    <VStack flex={1} safeArea bgColor='blueGray.100' py={5}>
+    <View style={{ flex: 1, paddingVertical: 20 }}>
       <FlatList
         data={lstMenu}
-        renderItem={renderMenu}
+        renderItem={renderMenuNative}
         keyExtractor={(item, index) => 'menu' + index.toString()}
-        ItemSeparatorComponent={Space}
+        contentContainerStyle={{ gap: 12 }}
         ListFooterComponent={Space}
       />
-    </VStack>
+    </View>
   )
 }
 
