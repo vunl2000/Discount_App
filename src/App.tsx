@@ -1,10 +1,14 @@
 import React from 'react'
 import AppNavigation from './Navigation/index'
 import { NativeBaseProvider } from "native-base";
+import { Provider } from 'react-redux';
+import { store } from './Redux/store';
 const App = () => {
     return (
         <NativeBaseProvider>
-            <AppNavigation />
+            <Provider store={store}>
+                <AppNavigation />
+            </Provider>
         </NativeBaseProvider>
     )
 };
