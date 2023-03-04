@@ -7,6 +7,9 @@ import { IconIonicons, IconOcticons } from '../../Utils/IconHelper'
 import styles from './styles'
 import { SCREEN_WIDTH } from '../../Constants/constants'
 import { SCREENS } from '../../Constants/screens'
+import { useAppDispatch, useAppSelector } from '../../Redux/hooks'
+import { RootState } from '../../Redux/store'
+import { SetLoginStatus } from '../../Redux/Slices/LoginSlice'
 
 type Props = {}
 
@@ -25,6 +28,12 @@ const Space = () => (
 )
 
 const Profile: React.FC<Props> = (props) => {
+
+  const login = useAppSelector((store: RootState) => store.login);
+  const dispatch = useAppDispatch();
+
+  console.log("data", login);
+
 
   const navigation: any = useNavigation();
   const toast = useToast();
@@ -45,7 +54,8 @@ const Profile: React.FC<Props> = (props) => {
       width: SCREEN_WIDTH * 0.6,
       justifyContent: 'center',
       alignItems: 'center'
-    })
+    });
+    dispatch(SetLoginStatus(true))
   }
 
   const lstMenu = [
